@@ -1,0 +1,324 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Markdown2Pdf</name>
+    </assembly>
+    <members>
+        <member name="T:Markdown2Pdf.Markdown2PdfConverter">
+            <summary>
+            Use this to parse markdown to PDF.
+            </summary>
+        </member>
+        <member name="P:Markdown2Pdf.Markdown2PdfConverter.Options">
+            <summary>
+            All the options this converter uses for generating the PDF.
+            </summary>
+        </member>
+        <member name="P:Markdown2Pdf.Markdown2PdfConverter.ContentTemplate">
+            <summary>
+            The template used for generating the html which then gets converted into PDF.
+            </summary>
+        </member>
+        <member name="M:Markdown2Pdf.Markdown2PdfConverter.#ctor(Markdown2Pdf.Options.Markdown2PdfOptions)">
+            <summary>
+            Instantiate a new <see cref="T:Markdown2Pdf.Markdown2PdfConverter"/>.
+            </summary>
+            <param name="options">Optional options to specify how to convert the markdown.</param>
+        </member>
+        <member name="M:Markdown2Pdf.Markdown2PdfConverter.Convert(System.IO.FileInfo)">
+            <inheritdoc cref="M:Markdown2Pdf.Markdown2PdfConverter.Convert(System.IO.FileInfo,System.IO.FileInfo)"/>
+            <remarks>The PDF will be saved in the same location as the markdown file with the naming convention "markdownFileName.pdf".</remarks>
+            <returns>The newly created PDF-file.</returns>
+        </member>
+        <member name="M:Markdown2Pdf.Markdown2PdfConverter.Convert(System.IO.FileInfo,System.IO.FileInfo)">
+            <summary>
+            Converts the given markdown-file to PDF.
+            </summary>
+            <param name="markdownFile"><see cref="T:System.IO.FileInfo"/> containing the markdown.</param>
+            <param name="outputFile"><see cref="T:System.IO.FileInfo"/> for saving the generated PDF.</param>
+        </member>
+        <member name="M:Markdown2Pdf.Markdown2PdfConverter.Convert(System.String)">
+            <inheritdoc cref="M:Markdown2Pdf.Markdown2PdfConverter.Convert(System.String,System.String)"/>
+            <remarks>The PDF will be saved in the same location as the markdown file with the naming convention "markdownFileName.pdf".</remarks>
+            <returns>Filepath to the generated pdf.</returns>
+        </member>
+        <member name="M:Markdown2Pdf.Markdown2PdfConverter.Convert(System.String,System.String)">
+            <summary>
+            Converts the given markdown-file to PDF.
+            </summary>
+            <param name="markdownFilePath">Path to the markdown file.</param>
+            <param name="outputFilePath">File path for saving the PDF to.</param>
+            <remarks>The PDF will be saved in the same location as the markdown file with the naming convention "markdownFileName.pdf".</remarks>
+        </member>
+        <member name="M:Markdown2Pdf.Markdown2PdfConverter.Convert(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Converts the given enumerable of markdown-files to PDF.
+            </summary>
+            <remarks>The PDF will be saved in the same location of the first markdown file with the naming convention "markdownFileName.pdf".</remarks>
+        </member>
+        <member name="M:Markdown2Pdf.Markdown2PdfConverter.Convert(System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>
+            Converts the given enumerable of markdown-files to PDF.
+            </summary>
+            <param name="markdownFilePaths">Enumerable with paths to the markdown files.</param>
+            <param name="outputFilePath">File path for saving the PDF to.</param>
+        </member>
+        <member name="M:Markdown2Pdf.Markdown2PdfConverter._Convert(System.String,System.String,System.String)">
+            <summary>
+            Converts the given list of markdown-files to PDF.
+            </summary>
+            <param name="outputFilePath">File path for saving the PDF to.</param>
+            <param name="markdownContent">String holding all markdown data.</param>
+            <param name="markdownFilePath">Path to the first markdown file.</param>
+        </member>
+        <member name="M:Markdown2Pdf.Markdown2PdfConverter._AddHeaderFooterStylesToHtml(System.String)">
+            <summary>
+            Applies extra styles to the given header / footer html because the default ones don't look good on the pdf.
+            </summary>
+            <param name="html">The header / footer html to add the styles to.</param>
+            <returns>The html with added styles.</returns>
+        </member>
+        <member name="M:Markdown2Pdf.Markdown2PdfConverter._FillHeaderFooterDocumentTitleClass(System.String)">
+            <summary>
+            Inserts the document title into all elements containing the document-title class.
+            </summary>
+            <param name="html">Template html.</param>
+            <returns>The html with inserted document-title.</returns>
+        </member>
+        <member name="T:Markdown2Pdf.Options.CodeHighlightTheme">
+            <summary>
+            The theme to use for styling the markdown code blocks.
+            </summary>
+        </member>
+        <member name="M:Markdown2Pdf.Options.CodeHighlightTheme.ToString">
+            <summary>
+            Returns the css file name of the theme.
+            </summary>
+        </member>
+        <member name="P:Markdown2Pdf.Options.CodeHighlightTheme.None">
+            <summary>
+            Apply no theme.
+            </summary>
+        </member>
+        <member name="T:Markdown2Pdf.Options.MarginOptions">
+            <summary>
+            Margin values with units.
+            </summary>
+        </member>
+        <member name="P:Markdown2Pdf.Options.MarginOptions.Top">
+            <inheritdoc cref="P:PuppeteerSharp.Media.MarginOptions.Top"/>
+        </member>
+        <member name="P:Markdown2Pdf.Options.MarginOptions.Right">
+            <inheritdoc cref="P:PuppeteerSharp.Media.MarginOptions.Right"/>
+        </member>
+        <member name="P:Markdown2Pdf.Options.MarginOptions.Bottom">
+            <inheritdoc cref="P:PuppeteerSharp.Media.MarginOptions.Bottom"/>
+        </member>
+        <member name="P:Markdown2Pdf.Options.MarginOptions.Left">
+            <inheritdoc cref="P:PuppeteerSharp.Media.MarginOptions.Left"/>
+        </member>
+        <member name="T:Markdown2Pdf.Options.Markdown2PdfOptions">
+            <summary>
+            All the options for the conversion.
+            </summary>
+        </member>
+        <member name="P:Markdown2Pdf.Options.Markdown2PdfOptions.ModuleOptions">
+            <summary>
+            Options that decide from where to load additional modules. Default: <see cref="P:Markdown2Pdf.Options.ModuleOptions.Remote"/>.
+            </summary>
+        </member>
+        <member name="P:Markdown2Pdf.Options.Markdown2PdfOptions.Theme">
+            <summary>
+            The styling to apply to the document. Default: <see cref="P:Markdown2Pdf.Options.Theme.Github"/>.
+            </summary>
+        </member>
+        <member name="P:Markdown2Pdf.Options.Markdown2PdfOptions.CodeHighlightTheme">
+            <summary>
+            The theme to use for highlighting code blocks. Default: <see cref="P:Markdown2Pdf.Options.CodeHighlightTheme.Github"/>.
+            </summary>
+        </member>
+        <member name="P:Markdown2Pdf.Options.Markdown2PdfOptions.EnableAutoLanguageDetection">
+            <summary>
+            Auto detect the language for code blocks without specfied language.
+            </summary>
+        </member>
+        <member name="P:Markdown2Pdf.Options.Markdown2PdfOptions.HeaderHtml">
+            <summary>
+            An html string to use as the document-header.
+            </summary>
+        </member>
+        <member name="P:Markdown2Pdf.Options.Markdown2PdfOptions.FooterHtml">
+            <summary>
+            An html string to use as the document-footer.
+            </summary>
+        </member>
+        <member name="P:Markdown2Pdf.Options.Markdown2PdfOptions.DocumentTitle">
+            <summary>
+            The title of this document. Can be injected into the header / footer by adding the class <c>document-title</c> to the element.
+            </summary>
+        </member>
+        <member name="P:Markdown2Pdf.Options.Markdown2PdfOptions.CustomHeadContent">
+            <summary>
+            A <see langword="string"/> containing any content valid inside a html <c>&lt;head&gt;</c> 
+            to apply extra scripting / styling to the document.
+            </summary>
+        </member>
+        <member name="P:Markdown2Pdf.Options.Markdown2PdfOptions.ChromePath">
+            <summary>
+            Path to chrome or chromium executable. If set to <see langword="null"/> downloads chromium by itself.
+            </summary>
+        </member>
+        <member name="P:Markdown2Pdf.Options.Markdown2PdfOptions.KeepHtml">
+            <summary>
+            Doesn't delete the html-file used for generating the PDF if set to <see langword="true"/>. Default: <see langword="false"/>.
+            </summary>
+        </member>
+        <member name="P:Markdown2Pdf.Options.Markdown2PdfOptions.MarginOptions">
+            <summary>
+            Css-margins for the sides of the document.
+            </summary>
+        </member>
+        <member name="P:Markdown2Pdf.Options.Markdown2PdfOptions.IsLandscape">
+            <summary>
+            Paper orientation. Default: <see langword="false"/>.
+            </summary>
+        </member>
+        <member name="P:Markdown2Pdf.Options.Markdown2PdfOptions.Format">
+            <summary>
+            The paper format for the PDF.
+            </summary>
+        </member>
+        <member name="P:Markdown2Pdf.Options.Markdown2PdfOptions.Scale">
+            <inheritdoc cref="P:PuppeteerSharp.PdfOptions.Scale"/>
+        </member>
+        <member name="P:Markdown2Pdf.Options.Markdown2PdfOptions.TableOfContents">
+            <inheritdoc cref="T:Markdown2Pdf.Options.TableOfContents"/>
+        </member>
+        <member name="T:Markdown2Pdf.Options.ModuleOptions">
+            <summary>
+            Options that decide from where to load additional modules.
+            </summary>
+        </member>
+        <member name="P:Markdown2Pdf.Options.ModuleOptions.ModuleLocation">
+            <summary>
+            Provides information from where to load modules.
+            </summary>
+        </member>
+        <member name="M:Markdown2Pdf.Options.ModuleOptions.#ctor(Markdown2Pdf.Options.ModuleLocation)">
+            <summary>
+            Creates a new instance of <see cref="T:Markdown2Pdf.Options.ModuleOptions"/>.
+            </summary>
+            <param name="moduleLocation">Location from where to load the modules.</param>
+        </member>
+        <member name="P:Markdown2Pdf.Options.ModuleOptions.None">
+            <summary>
+            Don't load any additional modules.
+            </summary>
+        </member>
+        <member name="P:Markdown2Pdf.Options.ModuleOptions.Remote">
+            <summary>
+            Loads the node_modules over remote http-requests.
+            </summary>
+            <remarks>This option requires an internet connection.</remarks>
+        </member>
+        <member name="M:Markdown2Pdf.Options.ModuleOptions.FromLocalPath(System.String)">
+            <summary>
+            Loads the node_modules from the given (local) npm directory.
+            </summary>
+            <param name="modulePath">The path to the node_module directory.</param>
+        </member>
+        <member name="T:Markdown2Pdf.Options.ModuleLocation">
+            <inheritdoc cref="P:Markdown2Pdf.Options.ModuleOptions.ModuleLocation"/>
+        </member>
+        <member name="F:Markdown2Pdf.Options.ModuleLocation.None">
+            <inheritdoc cref="P:Markdown2Pdf.Options.ModuleOptions.None"/>
+        </member>
+        <member name="F:Markdown2Pdf.Options.ModuleLocation.Remote">
+            <inheritdoc cref="P:Markdown2Pdf.Options.ModuleOptions.Remote"/>
+        </member>
+        <member name="F:Markdown2Pdf.Options.ModuleLocation.Custom">
+            <inheritdoc cref="M:Markdown2Pdf.Options.ModuleOptions.FromLocalPath(System.String)"/>
+        </member>
+        <member name="T:Markdown2Pdf.Options.NodeModuleOptions">
+            <summary>
+            Load modules from a local node_module directory.
+            </summary>
+            <param name="modulePath">Path to the node_module directory.</param>
+        </member>
+        <member name="M:Markdown2Pdf.Options.NodeModuleOptions.#ctor(System.String)">
+            <summary>
+            Load modules from a local node_module directory.
+            </summary>
+            <param name="modulePath">Path to the node_module directory.</param>
+        </member>
+        <member name="P:Markdown2Pdf.Options.NodeModuleOptions.ModulePath">
+            <summary>
+            The path to the module directory.
+            </summary>
+        </member>
+        <member name="P:Markdown2Pdf.Options.PredefinedTheme.Type">
+            <summary>
+            The type of this theme.
+            </summary>
+        </member>
+        <member name="T:Markdown2Pdf.Options.ThemeType">
+            <summary>
+            All predefined themes.
+            </summary>
+        </member>
+        <member name="T:Markdown2Pdf.Options.TableOfContents">
+            <inheritdoc cref="M:Markdown2Pdf.Options.TableOfContents.#ctor(System.Boolean,System.Int32)"/>
+        </member>
+        <member name="M:Markdown2Pdf.Options.TableOfContents.#ctor(System.Boolean,System.Int32)">
+            <summary>
+            Inserts a Table of Contents into the PDF, generated from all headers. 
+            The TOC will be inserted into all <c>&lt;!--TOC--&gt;</c> comments within the markdown document. 
+            </summary>
+            <param name="isOrdered">
+            If <see langword="true"/>, will generate an Ordered List, otherwise an Unordered List.
+            </param>
+            <param name="maxDepthLevel">
+            The maximum level of heading depth to include in the TOC 
+            (e.g. <c>3</c> will include headings up to <c>&lt;h3&gt;</c>).
+            </param>
+        </member>
+        <member name="T:Markdown2Pdf.Options.Theme">
+            <summary>
+            The theme to use for styling the document.
+            </summary>
+        </member>
+        <member name="P:Markdown2Pdf.Options.Theme.None">
+            <summary>
+            Don't apply any theme to the document.
+            </summary>
+        </member>
+        <member name="P:Markdown2Pdf.Options.Theme.Github">
+            <summary>
+            Githubs markdown theme.
+            </summary>
+            <remarks>If the option <see cref="M:Markdown2Pdf.Options.ModuleOptions.FromLocalPath(System.String)"/> is being used, 
+            the npm-package <c>github-markdown-css</c> needs to be installed in the corresponding location.</remarks>
+        </member>
+        <member name="P:Markdown2Pdf.Options.Theme.Latex">
+            <summary>
+            Latex like document styling.
+            </summary>
+            <remarks>If the option <see cref="M:Markdown2Pdf.Options.ModuleOptions.FromLocalPath(System.String)"/> is being used, 
+            the npm-package <c>latex.css</c> needs to be installed in the corresponding location.</remarks>
+        </member>
+        <member name="M:Markdown2Pdf.Options.Theme.Custom(System.String)">
+            <summary>
+            Define your own theme.
+            </summary>
+            <param name="cssPath">Path to the css containing the styles.</param>
+            <returns>The generated PredefinedTheme</returns>
+        </member>
+        <member name="M:Markdown2Pdf.Services.EmbeddedResourceService.GetResourceContent(System.String)">
+            <summary>
+            Loads the text content of an embedded resource in this <see cref="T:System.Reflection.Assembly"/>.
+            </summary>
+            <param name="resourceName">The filename of the resource to load.</param>
+            <returns>The text content of the resource.</returns>
+        </member>
+    </members>
+</doc>
